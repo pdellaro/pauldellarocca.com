@@ -1,0 +1,38 @@
+<style>
+#map {
+    position:absolute;
+    top:50px;
+    height:400px;
+    width:100%;
+}
+</style>
+
+<div class="container">
+    <div id="map"></div>
+</div>
+
+<script>
+    function initMap() {
+        var mapCanvas = document.getElementById("map");
+        var myCenter = new google.maps.LatLng(42.2852844,-71.3460892); 
+        var mapOptions = {
+            center: myCenter, zoom: 18
+        };
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+    
+        var marker = new google.maps.Marker({
+            position:myCenter,
+            animation:google.maps.Animation.BOUNCE
+        });
+        marker.setMap(map);
+    
+        var infowindow = new google.maps.InfoWindow({
+            content: "<font color='black'><b>Kitchensmith, Inc.</b><br>17 South Ave<br>Natick, MA 01760<br><a href='tel:+1-508-651-2900'>508-651-2900</a></font>"
+        });
+        infowindow.open(map,marker);
+    }
+
+</script>
+
+<!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDlmQ9X-MycSWJlTc5gSaZTJSJjxP-Q6fo&callback=initMap" async defer></script>
